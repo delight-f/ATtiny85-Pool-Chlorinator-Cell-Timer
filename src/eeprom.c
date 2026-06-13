@@ -77,6 +77,9 @@ static void findLatest(uint8_t *found, uint16_t *slot) {
     }
 }
 
+/* ---- External references ---- */
+extern uint32_t remainingTime;
+
 /* ---- Public API ---- */
 
 void saveState(void) {
@@ -103,9 +106,6 @@ void saveState(void) {
     eeprom_write_byte((uint8_t*)(a+1), EEPROM_MAGIC_2);
     eeprom_write_byte((uint8_t*)(a+0), EEPROM_MAGIC_1);
 }
-
-/* ---- Externals ---- */
-extern uint32_t remainingTime;
 
 void loadState(void) {
     uint8_t found;

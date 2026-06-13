@@ -47,6 +47,12 @@
 #define EEPROM_MAGIC_2     0x5A
 #define EEPROM_VERSION     1
 
+/* ======================== globals.h ======================== */
+
+/* Declared here so all functions below can see them.
+ * Defined at the bottom before main(). */
+extern uint32_t remainingTime;
+
 /* ======================== timer.c ======================== */
 
 volatile uint32_t millisCounter = 0;
