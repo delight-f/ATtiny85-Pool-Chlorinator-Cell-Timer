@@ -68,16 +68,6 @@ The original Compuchlor design drives two SCRs via relays to reverse the DC pola
 
 The remaining pins (PB0, PB1, PB4, PB5) are unused. PB5 is the RESET pin — leave it pulled high per the ATtiny85 datasheet.
 
-### Bill of Materials
-
-| Component | Qty | Notes |
-|---|---|---|
-| ATTiny85-20PU | 1 | DIP-8, programmed at 8 MHz internal RC |
-| 5V relay module (x2) or discrete relays + driver transistors | 2 | Driven by PB3/PB2, active-high |
-| 100 nF decoupling cap | 1 | Across VCC/GND near the MCU |
-| 10 kΩ pull-up | 1 | Between PB5 (RESET) and VCC |
-| Programming header | 1 | 6-pin ISP for initial flash |
-
 ### Relay Wiring to SCRs
 
 ```
