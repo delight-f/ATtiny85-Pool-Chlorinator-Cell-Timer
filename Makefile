@@ -6,7 +6,7 @@ OBJCOPY = avr-objcopy
 SIZE    = avr-size
 CFLAGS  = -mmcu=$(MCU) -DF_CPU=$(F_CPU) -Os -Wall -Wextra -std=c99
 
-SRC  = src/main.c src/timer.c src/relay.c src/eeprom.c
+SRC  = firmware/main.c firmware/timer.c firmware/relay.c firmware/eeprom.c
 OBJ  = $(SRC:.c=.o)
 TARGET = chlorinator
 
@@ -57,14 +57,14 @@ INO_FILE = chlorinator_controller.ino
 
 ino: $(INO_FILE)
 
-$(INO_FILE): src/config.h src/timer.c src/relay.c src/eeprom.c src/main.c
-	@echo "Regenerating $(INO_FILE) from src/..."
+$(INO_FILE): firmware/config.h firmware/timer.c firmware/relay.c firmware/eeprom.c firmware/main.c
+	@echo "Regenerating $(INO_FILE) from firmware/..."
 	@printf '%s\n' \
 	  '/*' \
 	  ' * Pool Chlorinator Timer Controller - ATtiny85 V2.3' \
 	  ' *' \
-	  ' * This file is auto-generated from src/*.c + src/*.h by `make ino`.' \
-	  ' * Edit the source modules in src/ and regenerate rather than editing' \
+	  ' * This file is auto-generated from firmware/*.c + firmware/*.h by `make ino`.' \
+	  ' * Edit the source modules in firmware/ and regenerate rather than editing' \
 	  ' * this file directly.' \
 	  ' *' \
 	  ' * - Alternates between two relays every 12 hours' \
@@ -93,7 +93,7 @@ $(INO_FILE): src/config.h src/timer.c src/relay.c src/eeprom.c src/main.c
 	  '#include <avr/wdt.h>' \
 	  '#include <stdint.h>' \
 	  '' > $(INO_FILE).tmp
-	@for f in src/config.h src/timer.c src/relay.c src/eeprom.c src/main.c; do \
+	@for f in firmware/config.h firmware/timer.c firmware/relay.c firmware/eeprom.c firmware/main.c; do \
 	  echo "/* ======================== $$(basename $$f) ======================== */" >> $(INO_FILE).tmp; \
 	  sed '1,/^\/\* =/d' $$f >> $(INO_FILE).tmp; \
 	  echo '' >> $(INO_FILE).tmp; \

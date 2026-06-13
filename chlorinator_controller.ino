@@ -1,8 +1,8 @@
 /*
  * Pool Chlorinator Timer Controller - ATtiny85 V2.3
  *
- * This file is auto-generated from src/*.c + src/*.h by `make ino`.
- * Edit the source modules in src/ and regenerate rather than editing
+ * This file is auto-generated from firmware/*.c + firmware/*.h by `make ino`.
+ * Edit the source modules in firmware/ and regenerate rather than editing
  * this file directly.
  *
  * - Alternates between two relays every 12 hours

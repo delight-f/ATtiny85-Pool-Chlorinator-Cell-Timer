@@ -127,7 +127,7 @@ chlorinator_controller/
 ├── LICENSE                            # MIT
 ├── Makefile                           # avr-gcc build + avrdude flash + ino generation
 ├── chlorinator_controller.ino         # Arduino IDE upload (auto-generated)
-└── src/
+└── firmware/
     ├── config.h                       # Pin defines, timing constants, EEPROM layout
     ├── timer.c / timer.h              # Timer0 1ms tick, safeMillis(), timeDiff()
     ├── relay.c / relay.h              # Relay control (off, set with settling delay)
@@ -139,10 +139,12 @@ There are **two ways** to work with this code, depending on your comfort level:
 
 | Method | For | How |
 |---|---|---|
-| **src/ + Makefile** | Developers | `make all` → `.hex`, `make flash` → upload |
+| **firmware/ + Makefile** | Developers | `make all` → `.hex`, `make flash` → upload |
 | **.ino file** | Beginners / Arduino IDE users | Open `chlorinator_controller.ino`, select board, click Upload |
 
-The `.ino` file is **auto-generated** from the `src/` modules by running `make ino`. If you edit `src/`, regenerate it to keep them in sync.
+The `.ino` file is **auto-generated** from the `firmware/` modules by running `make ino`. If you edit `firmware/`, regenerate it to keep them in sync.
+
+> **Note for Arduino IDE users:** The `firmware/` directory contains the modular source for developers. The `.ino` file is a standalone amalgamation — you only need to open that single file. The IDE will **not** compile the `firmware/` folder automatically because it isn't named `src/`.
 
 ---
 
