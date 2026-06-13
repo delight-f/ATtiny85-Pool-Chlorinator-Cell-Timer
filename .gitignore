@@ -1,5 +1,8 @@
 *.o
 *.elf
-*.hex
 *.tmp
 build/
+
+# Ignore hex files everywhere except releases/
+*.hex
+!releases/**/*.hex
